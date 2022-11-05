@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
 	public void OnLanding()
 	{
 		animator.SetBool("IsJumping", false);
+		Debug.Log("ONLAND Called");
 	}
 
 	//public void OnCrouching(bool isCrouching)
