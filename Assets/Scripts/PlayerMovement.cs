@@ -11,16 +11,13 @@ public class PlayerMovement : MonoBehaviour
 
 	float horizontalMove = 0f;
 	bool jump = false;
-	bool crouch = false;
 
-	// Update is called once per frame
 	void Update()
 	{
 
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
 		animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
-		Debug.Log("speed"+ Mathf.Abs(horizontalMove).ToString());
 
 		if (Input.GetButtonDown("Jump"))
 		{
@@ -28,14 +25,6 @@ public class PlayerMovement : MonoBehaviour
 			animator.SetBool("IsJumping", true);
 		}
 
-		//if (Input.GetButtonDown("Crouch"))
-		//{
-		//	crouch = true;
-		//}
-		//else if (Input.GetButtonUp("Crouch"))
-		//{
-		//	crouch = false;
-		//}
 
 	}
 
@@ -45,14 +34,8 @@ public class PlayerMovement : MonoBehaviour
 		Debug.Log("ONLAND Called");
 	}
 
-	//public void OnCrouching(bool isCrouching)
-	//{
-	//	animator.SetBool("IsCrouching", isCrouching);
-	//}
-
-	void FixedUpdate()
+    void FixedUpdate()
 	{
-		// Move our character
 		controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
 		jump = false;
 	}
